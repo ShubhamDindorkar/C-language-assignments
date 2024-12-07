@@ -3,7 +3,7 @@
 int main()
 {
     int rows, cols;
-    int mat1[10][10], mat2[10][10], result[10][10];
+    int mat1[10][10], mat2[10][10], result[10][10] = {0}; // Initialize result matrix
 
     printf("Enter the number of rows and columns: ");
     scanf("%d %d", &rows, &cols);
@@ -26,16 +26,20 @@ int main()
         }
     }
 
-    // Adding the matrices
+    // Performing matrix multiplication
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < cols; j++)
         {
-            result[i][j] = mat1[i][j] + mat2[i][j];
+            for (int k = 0; k < cols; k++)
+            {
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
         }
     }
 
-    printf("matrix after addition:\n");
+    // Display the resulting matrix
+    printf("Resulting matrix after multiplication:\n");
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < cols; j++)
