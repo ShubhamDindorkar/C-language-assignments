@@ -1,32 +1,50 @@
-
 #include <stdio.h>
 
 int main()
 {
-    int i, j, k;
-    int a[3][3] = {{4, 5, 8}, {3, 6, 1}, {2, 9, 7}};
-    int b[3][3] = {{1, 5, 3}, {9, 1, 4}, {3, 8, 9}};
-    int multiply[3][3] = {0}; // Initialize all elements to 0
+    int rows, cols;
+    int mat1[10][10], mat2[10][10], result[10][10] = {0}; // Initialize result matrix
+
+    printf("Enter the number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    printf("Enter elements of the first matrix:\n");
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            scanf("%d", &mat1[i][j]);
+        }
+    }
+
+    printf("Enter elements of the second matrix:\n");
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            scanf("%d", &mat2[i][j]);
+        }
+    }
 
     // Performing matrix multiplication
-    for (i = 0; i < 3; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (j = 0; j < 3; j++)
+        for (int j = 0; j < cols; j++)
         {
-            for (k = 0; k < 3; k++)
+            for (int k = 0; k < cols; k++)
             {
-                multiply[i][j] += a[i][k] * b[k][j];
+                result[i][j] += mat1[i][k] * mat2[k][j];
             }
         }
     }
 
     // Display the resulting matrix
     printf("Resulting matrix after multiplication:\n");
-    for (i = 0; i < 3; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (j = 0; j < 3; j++)
+        for (int j = 0; j < cols; j++)
         {
-            printf("%d ", multiply[i][j]);
+            printf("%d ", result[i][j]);
         }
         printf("\n");
     }
